@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import './style-border.css';
 
 function App() {
   return (
