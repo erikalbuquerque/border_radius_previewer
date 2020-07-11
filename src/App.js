@@ -8,9 +8,28 @@ function App() {
         <h1>Border Radius Previewer</h1>
       </header>
 
-
       <div className="content">
-         <div>Box</div>
+
+         <div className="box">
+
+           <div className="inputs">
+             <input type="number" value="0"/>
+             <input type="number" value="0"/>
+           </div>
+
+           <div className="box-model">
+             <span>box-model</span>
+           </div>
+
+           <div className="inputs">
+             <input type="number" value="0"/>
+             <input type="number" value="0"/>
+           </div>
+
+         </div>
+
+          <button>copy css</button>
+
       </div>
     </div>
   );
