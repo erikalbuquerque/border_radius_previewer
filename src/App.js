@@ -8,6 +8,9 @@ function App() {
   const [bottomLeft, setBottomLeft] = useState(0);
   const [bottomRight, setBottomRight] = useState(0);
 
+  const [copySuccess, setCopySuccess] = useState("");
+
+
   function borderTopLeft(value) {
     setTopLeft(value);
   }
@@ -22,6 +25,13 @@ function App() {
 
   function borderBottomRight(value) {
     setBottomRight(value);
+  }
+
+  function copyToBoard() {
+    navigator.clipboard.writeText(
+      `border-radius: ${topLeft}px ${topRight}px ${bottomLeft}px ${bottomRight}px;`
+    );
+    setCopySuccess("Copied!");
   }
 
   return (
@@ -47,7 +57,8 @@ function App() {
 
           <div className="box-model">
             <span>
-              border-radius: {topLeft}px {topRight}px {bottomLeft}px {bottomRight}px;
+              border-radius: {topLeft}px {topRight}px {bottomLeft}px{" "}
+              {bottomRight}px;
             </span>
           </div>
 
@@ -65,7 +76,8 @@ function App() {
           </div>
         </div>
 
-        <button>copy css</button>
+        <button onClick={() => copyToBoard()}>copy css</button>
+        <span className="message">{copySuccess}</span>
       </div>
     </div>
   );
