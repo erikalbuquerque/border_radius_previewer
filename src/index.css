@@ -92,14 +92,37 @@ button {
   cursor: pointer;
 }
 .message {
-  background-color: #3db13d;
-  align-self: flex-end;
-  border-radius: 5px;
-  padding: 5px 15px;
   color: #fff;
   font-size: 12px;
   text-align: center;
+  margin-right: 5px;
+}
+.popup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 300px;
   left: 70px;
+  background-color: #3db13d;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+.btn {
+  cursor: pointer;
+  color: #fff;
+  position: absolute;
+  top: -4px;
+  right: 3px;
+}
+.btn:hover {
+  color: rgba(255, 255, 255, 0.699);
+}
+.props {
+  background-color: #3db13d;
+  padding: 8px 3px;
+  text-align: center;
+  border-radius: 10px;
+  color: #fff;
 }

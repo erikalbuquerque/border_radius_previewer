@@ -8,8 +8,7 @@ function App() {
   const [bottomLeft, setBottomLeft] = useState(0);
   const [bottomRight, setBottomRight] = useState(0);
 
-  const [copySuccess, setCopySuccess] = useState("");
-
+  const [copySuccess, setCopySuccess] = useState(false);
 
   function borderTopLeft(value) {
     setTopLeft(value);
@@ -31,9 +30,14 @@ function App() {
     navigator.clipboard.writeText(
       `border-radius: ${topLeft}px ${topRight}px ${bottomLeft}px ${bottomRight}px;`
     );
-    setCopySuccess("Copied!");
+    showMessage(copySuccess);
   }
-
+  function showMessage(copySuccess) {
+    if (!copySuccess) setCopySuccess(true);
+  }
+  function hiddenMessage(copySuccess) {
+    if (copySuccess) setCopySuccess(false);
+  }
   return (
     <div className="main">
       <header>
@@ -41,6 +45,10 @@ function App() {
       </header>
 
       <div className="content">
+        <span className="props">
+          border-radius: {topLeft}px {topRight}px {bottomLeft}px {bottomRight}
+          px;
+        </span>
         <div className="box">
           <div className="inputs">
             <input
@@ -55,12 +63,12 @@ function App() {
             />
           </div>
 
-          <div className="box-model">
-            <span>
-              border-radius: {topLeft}px {topRight}px {bottomLeft}px{" "}
-              {bottomRight}px;
-            </span>
-          </div>
+          <div
+            className="box-model"
+            style={{
+              borderRadius: `${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`,
+            }}
+          ></div>
 
           <div className="inputs">
             <input
@@ -75,9 +83,17 @@ function App() {
             />
           </div>
         </div>
-
         <button onClick={() => copyToBoard()}>copy css</button>
-        <span className="message">{copySuccess}</span>
+        {copySuccess ? (
+          <div className="popup">
+            <span className="message">Copied!</span>
+            <span className="btn" onClick={() => hiddenMessage(copySuccess)}>
+              x
+            </span>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
