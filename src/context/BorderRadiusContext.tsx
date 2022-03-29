@@ -28,28 +28,28 @@ export function BorderRadiusProvider({ children }: BorderRadiusProviderProps) {
 
   const handleBorderTopLeft = useCallback(
     (value: number) => {
-      setTopLeft(value);
+      if (value.toString().length <= 3) setTopLeft(value);
     },
     [topLeft]
   );
 
   const handleBorderTopRight = useCallback(
     (value: number) => {
-      setTopRight(value);
+      if (value.toString().length <= 3) setTopRight(value);
     },
     [topRight]
   );
 
   const handleBorderBottomLeft = useCallback(
     (value: number) => {
-      setBottomLeft(value);
+      if (value.toString().length <= 3) setBottomLeft(value);
     },
     [bottomLeft]
   );
 
   const handleBorderBottomRight = useCallback(
     (value: number) => {
-      setBottomRight(value);
+      if (value.toString().length <= 3) setBottomRight(value);
     },
     [bottomRight]
   );
@@ -66,17 +66,19 @@ export function BorderRadiusProvider({ children }: BorderRadiusProviderProps) {
   }
 
   return (
-    <BorderRadiusContext.Provider value={{
-      topLeft,
-      topRight,
-      bottomLeft,
-      bottomRight,
-      handleBorderTopLeft,
-      handleBorderTopRight,
-      handleBorderBottomLeft,
-      handleBorderBottomRight,
-      handleCopyToBoard
-    }}>
+    <BorderRadiusContext.Provider
+      value={{
+        topLeft,
+        topRight,
+        bottomLeft,
+        bottomRight,
+        handleBorderTopLeft,
+        handleBorderTopRight,
+        handleBorderBottomLeft,
+        handleBorderBottomRight,
+        handleCopyToBoard,
+      }}
+    >
       {children}
     </BorderRadiusContext.Provider>
   );
