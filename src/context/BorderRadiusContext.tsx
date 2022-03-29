@@ -1,4 +1,10 @@
-import { createContext, useState, useCallback, ReactNode } from "react";
+import {
+  createContext,
+  useState,
+  useCallback,
+  ReactNode,
+  useEffect,
+} from "react";
 
 type BorderRadiusProviderProps = {
   children: ReactNode;
@@ -14,6 +20,7 @@ interface BorderRadiusContext {
   handleBorderBottomLeft: (value: number) => void;
   handleBorderBottomRight: (value: number) => void;
   handleCopyToBoard: () => void;
+  isCopy: boolean;
 }
 
 export const BorderRadiusContext = createContext({} as BorderRadiusContext);
@@ -54,16 +61,24 @@ export function BorderRadiusProvider({ children }: BorderRadiusProviderProps) {
     [bottomRight]
   );
 
-  function showMessage() {
-    setIsCopy(!isCopy);
+  function showMessage(value: boolean) {
+    setIsCopy(value);
   }
 
   function handleCopyToBoard() {
     navigator.clipboard.writeText(
       `border-radius: ${topLeft}px ${topRight}px ${bottomLeft}px ${bottomRight}px;`
     );
-    showMessage();
+    showMessage(true);
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (isCopy) {
+        showMessage(false);
+      }
+    }, 1000);
+  }, [isCopy]);
 
   return (
     <BorderRadiusContext.Provider
@@ -77,6 +92,7 @@ export function BorderRadiusProvider({ children }: BorderRadiusProviderProps) {
         handleBorderBottomLeft,
         handleBorderBottomRight,
         handleCopyToBoard,
+        isCopy,
       }}
     >
       {children}
