@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import "./index.css";
-import "./style-border.css";
+import { useState } from "react";
 
-function App() {
+import "./index.css";
+
+export function App() {
   const [topLeft, setTopLeft] = useState(0);
   const [topRight, setTopRight] = useState(0);
   const [bottomLeft, setBottomLeft] = useState(0);
@@ -10,19 +10,19 @@ function App() {
 
   const [copySuccess, setCopySuccess] = useState(false);
 
-  function borderTopLeft(value) {
+  function borderTopLeft(value: number) {
     setTopLeft(value);
   }
 
-  function borderTopRight(value) {
+  function borderTopRight(value: number) {
     setTopRight(value);
   }
 
-  function borderBottomLeft(value) {
+  function borderBottomLeft(value: number) {
     setBottomLeft(value);
   }
 
-  function borderBottomRight(value) {
+  function borderBottomRight(value: number) {
     setBottomRight(value);
   }
 
@@ -30,12 +30,12 @@ function App() {
     navigator.clipboard.writeText(
       `border-radius: ${topLeft}px ${topRight}px ${bottomLeft}px ${bottomRight}px;`
     );
-    showMessage(copySuccess);
+    showMessage();
   }
-  function showMessage(copySuccess) {
+  function showMessage() {
     if (!copySuccess) setCopySuccess(true);
   }
-  function hiddenMessage(copySuccess) {
+  function hiddenMessage() {
     if (copySuccess) setCopySuccess(false);
   }
   return (
@@ -54,12 +54,12 @@ function App() {
             <input
               type="number"
               value={topLeft}
-              onChange={(e) => borderTopLeft(e.target.value)}
+              onChange={(e) => borderTopLeft(Number(e.target.value))}
             />
             <input
               type="number"
               value={bottomLeft}
-              onChange={(e) => borderBottomLeft(e.target.value)}
+              onChange={(e) => borderBottomLeft(Number(e.target.value))}
             />
           </div>
 
@@ -74,12 +74,12 @@ function App() {
             <input
               type="number"
               value={topRight}
-              onChange={(e) => borderTopRight(e.target.value)}
+              onChange={(e) => borderTopRight(Number(e.target.value))}
             />
             <input
               type="number"
               value={bottomRight}
-              onChange={(e) => borderBottomRight(e.target.value)}
+              onChange={(e) => borderBottomRight(Number(e.target.value))}
             />
           </div>
         </div>
@@ -87,7 +87,7 @@ function App() {
         {copySuccess ? (
           <div className="popup">
             <span className="message">Copied!</span>
-            <span className="btn" onClick={() => hiddenMessage(copySuccess)}>
+            <span className="btn" onClick={() => hiddenMessage()}>
               x
             </span>
           </div>
@@ -98,5 +98,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
