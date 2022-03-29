@@ -4,6 +4,7 @@ import { Container, Content } from "./styles/app";
 
 import { Logo } from "./components/Logo";
 import { Sandbox } from "./components/Sandbox";
+import { PropsDisplay } from "./components/PropsDisplay";
 
 export function App() {
   const [topLeft, setTopLeft] = useState(0);
@@ -47,7 +48,7 @@ export function App() {
         <Logo />
 
         <Sandbox>
-          <h1>Sandbox</h1>
+          <PropsDisplay />
         </Sandbox>
       </Content>
     </Container>
