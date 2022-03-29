@@ -4,8 +4,9 @@ import { Container, Content } from "./styles/app";
 
 import { Logo } from "./components/Logo";
 import { Sandbox } from "./components/Sandbox";
-import { PropsDisplay } from "./components/PropsDisplay";
 import { Box } from "./components/Box";
+import { PropsDisplay } from "./components/PropsDisplay";
+import { CornerRadiusBox } from "./components/CornerRadiusBox";
 
 
 export function App() {
@@ -51,6 +52,7 @@ export function App() {
 
         <Sandbox>
           <Box />
+          <CornerRadiusBox />
           <PropsDisplay />
         </Sandbox>
       </Content>
