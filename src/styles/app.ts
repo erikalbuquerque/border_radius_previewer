@@ -11,9 +11,9 @@ export const Container = styled.main({
 });
 
 export const Content = styled.div({
+  width: "100%",
   display: "flex",
   flexDirection: "row",
-  gap: "4rem",
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: "space-evenly",
 });

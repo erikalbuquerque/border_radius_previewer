@@ -5,6 +5,8 @@ import { Container, Content } from "./styles/app";
 import { Logo } from "./components/Logo";
 import { Sandbox } from "./components/Sandbox";
 import { PropsDisplay } from "./components/PropsDisplay";
+import { Box } from "./components/Box";
+
 
 export function App() {
   const [topLeft, setTopLeft] = useState(0);
@@ -48,6 +50,7 @@ export function App() {
         <Logo />
 
         <Sandbox>
+          <Box />
           <PropsDisplay />
         </Sandbox>
       </Content>
