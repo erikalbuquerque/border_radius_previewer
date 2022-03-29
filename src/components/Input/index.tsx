@@ -6,7 +6,7 @@ type InputProps = InputHTMLAttributes<HTMLInputElement>;
 export function Input(props: InputProps) {
   return (
     <Container>
-      <InputStyled {...props} />
+      <InputStyled {...props} min={0} />
     </Container>
   );
 }
