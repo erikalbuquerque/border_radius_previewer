@@ -1,18 +1,14 @@
+import { useBorderRadius } from "../../hooks/useBorderRadius";
 import { Container, Content } from "./styles";
 
 export function PropsDisplay() {
-  const obj = {
-    topLeft: 0,
-    topRight: 0,
-    bottomLeft: 0,
-    bottomRight: 0,
-  };
+  const { topLeft, topRight, bottomLeft, bottomRight } = useBorderRadius();
+
   return (
     <Container>
       <Content>
         <span>
-          border-radius: {obj.topLeft}px {obj.topRight}px {obj.bottomLeft}px{" "}
-          {obj.bottomRight}
+          border-radius: {topLeft}px {topRight}px {bottomLeft}px {bottomRight}
           px;
         </span>
       </Content>
