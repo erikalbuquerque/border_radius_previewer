@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import { Container, Content } from "./styles/app";
 
+import { Logo } from "./components/Logo";
+
 export function App() {
   const [topLeft, setTopLeft] = useState(0);
   const [topRight, setTopRight] = useState(0);
@@ -41,9 +43,7 @@ export function App() {
   return (
     <Container>
       <Content>
-        <header>
-          <h1>Border Radius Previewer</h1>
-        </header>
+        <Logo />
 
         <div>
           <span className="props">
