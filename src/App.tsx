@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import "./index.css";
+import { Container, Content } from "./styles/app";
 
 export function App() {
   const [topLeft, setTopLeft] = useState(0);
@@ -39,62 +39,64 @@ export function App() {
     if (copySuccess) setCopySuccess(false);
   }
   return (
-    <div className="main">
-      <header>
-        <h1>Border Radius Previewer</h1>
-      </header>
+    <Container>
+      <Content>
+        <header>
+          <h1>Border Radius Previewer</h1>
+        </header>
 
-      <div className="content">
-        <span className="props">
-          border-radius: {topLeft}px {topRight}px {bottomLeft}px {bottomRight}
-          px;
-        </span>
-        <div className="box">
-          <div className="inputs">
-            <input
-              type="number"
-              value={topLeft}
-              onChange={(e) => borderTopLeft(Number(e.target.value))}
-            />
-            <input
-              type="number"
-              value={bottomLeft}
-              onChange={(e) => borderBottomLeft(Number(e.target.value))}
-            />
+        <div>
+          <span className="props">
+            border-radius: {topLeft}px {topRight}px {bottomLeft}px {bottomRight}
+            px;
+          </span>
+          <div className="box">
+            <div className="inputs">
+              <input
+                type="number"
+                value={topLeft}
+                onChange={(e) => borderTopLeft(Number(e.target.value))}
+              />
+              <input
+                type="number"
+                value={bottomLeft}
+                onChange={(e) => borderBottomLeft(Number(e.target.value))}
+              />
+            </div>
+
+            <div
+              className="box-model"
+              style={{
+                borderRadius: `${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`,
+              }}
+            ></div>
+
+            <div className="inputs">
+              <input
+                type="number"
+                value={topRight}
+                onChange={(e) => borderTopRight(Number(e.target.value))}
+              />
+              <input
+                type="number"
+                value={bottomRight}
+                onChange={(e) => borderBottomRight(Number(e.target.value))}
+              />
+            </div>
           </div>
-
-          <div
-            className="box-model"
-            style={{
-              borderRadius: `${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`,
-            }}
-          ></div>
-
-          <div className="inputs">
-            <input
-              type="number"
-              value={topRight}
-              onChange={(e) => borderTopRight(Number(e.target.value))}
-            />
-            <input
-              type="number"
-              value={bottomRight}
-              onChange={(e) => borderBottomRight(Number(e.target.value))}
-            />
-          </div>
+          <button onClick={() => copyToBoard()}>copy css</button>
+          {copySuccess ? (
+            <div className="popup">
+              <span className="message">Copied!</span>
+              <span className="btn" onClick={() => hiddenMessage()}>
+                x
+              </span>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
-        <button onClick={() => copyToBoard()}>copy css</button>
-        {copySuccess ? (
-          <div className="popup">
-            <span className="message">Copied!</span>
-            <span className="btn" onClick={() => hiddenMessage()}>
-              x
-            </span>
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
-    </div>
+      </Content>
+    </Container>
   );
 }
