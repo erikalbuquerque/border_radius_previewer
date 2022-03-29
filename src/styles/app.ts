@@ -16,3 +16,9 @@ export const Content = styled.div({
   flexDirection: "row",
   justifyContent: "space-evenly",
 });
+
+export const Aside = styled.aside({
+  display: "flex",
+  flexDirection: "column",
+  gap: "2rem",
+});
