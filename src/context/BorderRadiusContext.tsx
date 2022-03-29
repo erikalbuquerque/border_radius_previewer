@@ -21,6 +21,7 @@ interface BorderRadiusContext {
   handleBorderBottomRight: (value: number) => void;
   handleCopyToBoard: () => void;
   isCopy: boolean;
+  handleResetBorderRadius: () => void;
 }
 
 export const BorderRadiusContext = createContext({} as BorderRadiusContext);
@@ -72,6 +73,13 @@ export function BorderRadiusProvider({ children }: BorderRadiusProviderProps) {
     showMessage(true);
   }
 
+  function handleResetBorderRadius() {
+    handleBorderTopLeft(0);
+    handleBorderTopRight(0);
+    handleBorderBottomLeft(0);
+    handleBorderBottomRight(0);
+  }
+
   useEffect(() => {
     setTimeout(() => {
       if (isCopy) {
@@ -93,6 +101,7 @@ export function BorderRadiusProvider({ children }: BorderRadiusProviderProps) {
         handleBorderBottomRight,
         handleCopyToBoard,
         isCopy,
+        handleResetBorderRadius,
       }}
     >
       {children}

@@ -8,6 +8,12 @@ export const Content = styled.div({
   gap: "1rem",
 });
 
+export const Tools = styled.div({
+  display: "flex",
+  flexDirection: "row",
+  gap: "0.5rem",
+});
+
 export const Inputs = styled.div({
   display: "flex",
   flexDirection: "row",
@@ -27,3 +33,15 @@ export const InputContent = styled.div`
     border-right: none;
   }
 `;
+
+export const ResetCornersButton = styled.button({
+  padding: "0 0.5rem",
+  border: "none",
+  borderRadius: "0.25rem",
+  backgroundColor: "#ebebeb",
+  cursor: "pointer",
+  transition: "filter 0.2s",
+  ":hover": {
+    filter: "brightness(0.95);",
+  },
+});
