@@ -6,6 +6,7 @@ import { Box } from "./components/Box";
 import { PropsDisplay } from "./components/PropsDisplay";
 import { CornerRadiusBox } from "./components/CornerRadiusBox";
 import { Help } from "./components/Help";
+import { Footer } from "./components/Footer";
 
 export function App() {
   return (
@@ -20,6 +21,7 @@ export function App() {
           <Box />
           <CornerRadiusBox />
           <PropsDisplay />
+          <Footer />
         </Sandbox>
       </Content>
     </Container>
