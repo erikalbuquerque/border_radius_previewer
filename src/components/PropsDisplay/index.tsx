@@ -1,5 +1,5 @@
 import { useBorderRadius } from "../../hooks/useBorderRadius";
-import { Container, Content, Props, Wrapper } from "./styles";
+import { Container, Content, Props, Wrapper, Message } from "./styles";
 import { BsCheck } from "react-icons/bs";
 import { useState } from "react";
 
@@ -39,7 +39,7 @@ export function PropsDisplay() {
           {isCopy && <BsCheck size={30} color="var(--green-500)" />}
         </Wrapper>
 
-        {isHover && <span>Click para copiar!</span>}
+        {isHover && <Message>Click para copiar!</Message>}
       </Content>
     </Container>
   );

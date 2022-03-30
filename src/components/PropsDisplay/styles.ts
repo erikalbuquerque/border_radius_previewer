@@ -5,15 +5,11 @@ export const Container = styled.div({
 });
 
 export const Content = styled.div({
+  position: "relative",
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-start",
   gap: "0.5rem",
-
-  span: {
-    fontSize: "0.875rem",
-    color: "var(--brown-700)",
-  },
 });
 
 type Props = {
@@ -45,3 +41,10 @@ export const Wrapper = styled.div`
   align-items: center;
   gap: 0.5rem;
 `;
+
+export const Message = styled.span({
+  position: "absolute",
+  fontSize: "0.875rem",
+  color: "var(--brown-700)",
+  bottom: "-30px",
+});
