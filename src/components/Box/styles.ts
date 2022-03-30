@@ -43,31 +43,31 @@ const BaseCorner = styled.div<Corner>`
 
 export const TopLeft = styled(BaseCorner)`
   top: 0;
-  border-top: 2px solid var(--red-400);
-  border-left: 2px solid var(--red-400);
+  border-top: 4px solid var(--red-400);
+  border-left: 4px solid var(--red-400);
   border-top-left-radius: ${(props) => `${props.corner}px`};
 `;
 
 export const TopRight = styled(BaseCorner)`
   top: 0;
   right: 0;
-  border-top: 2px solid var(--red-400);
-  border-right: 2px solid var(--red-400);
+  border-top: 4px solid var(--red-400);
+  border-right: 4px solid var(--red-400);
   border-top-right-radius: ${(props) => `${props.corner}px`};
 `;
 
 export const BottomRight = styled(BaseCorner)`
   bottom: 0;
   right: 0;
-  border-bottom: 2px solid var(--red-400);
-  border-right: 2px solid var(--red-400);
+  border-bottom: 4px solid var(--red-400);
+  border-right: 4px solid var(--red-400);
   border-bottom-right-radius: ${(props) => `${props.corner}px`};
 `;
 
 export const BottomLeft = styled(BaseCorner)`
   bottom: 0;
   left: 0;
-  border-bottom: 2px solid var(--red-400);
-  border-left: 2px solid var(--red-400);
+  border-bottom: 4px solid var(--red-400);
+  border-left: 4px solid var(--red-400);
   border-bottom-left-radius: ${(props) => `${props.corner}px`};
 `;
