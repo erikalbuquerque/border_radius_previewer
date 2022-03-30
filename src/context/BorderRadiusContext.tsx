@@ -15,6 +15,10 @@ interface BorderRadiusContext {
   topRight: number;
   bottomLeft: number;
   bottomRight: number;
+  showTopLeftBorderIndicator: boolean;
+  showTopRightBorderIndicator: boolean;
+  showBottomRightBorderIndicator: boolean;
+  showBottomLeftBorderIndicator: boolean;
   handleBorderTopLeft: (value: number) => void;
   handleBorderTopRight: (value: number) => void;
   handleBorderBottomLeft: (value: number) => void;
@@ -22,6 +26,10 @@ interface BorderRadiusContext {
   handleCopyToBoard: () => void;
   isCopy: boolean;
   handleResetBorderRadius: () => void;
+  handleShowTopLeftBorderIndicator: (value: boolean) => void;
+  handleShowTopRightBorderIndicator: (value: boolean) => void;
+  handleShowBottomRightBorderIndicator: (value: boolean) => void;
+  handleShowBottomLeftBorderIndicator: (value: boolean) => void;
 }
 
 export const BorderRadiusContext = createContext({} as BorderRadiusContext);
@@ -34,9 +42,21 @@ export function BorderRadiusProvider({ children }: BorderRadiusProviderProps) {
 
   const [isCopy, setIsCopy] = useState(false);
 
+  const [showTopLeftBorderIndicator, setShowTopLeftBorderIndicator] =
+    useState(false);
+  const [showTopRightBorderIndicator, setShowTopRightBorderIndicator] =
+    useState(false);
+  const [showBottomRightBorderIndicator, setShowBottomRightBorderIndicator] =
+    useState(false);
+
+  const [showBottomLeftBorderIndicator, setShowBottomLeftBorderIndicator] =
+    useState(false);
+
   const handleBorderTopLeft = useCallback(
     (value: number) => {
-      if (value.toString().length <= 3) setTopLeft(value);
+      if (value.toString().length <= 3) {
+        setTopLeft(value);
+      }
     },
     [topLeft]
   );
@@ -80,6 +100,22 @@ export function BorderRadiusProvider({ children }: BorderRadiusProviderProps) {
     handleBorderBottomRight(0);
   }
 
+  function handleShowTopLeftBorderIndicator(value: boolean) {
+    setShowTopLeftBorderIndicator(value);
+  }
+
+  function handleShowTopRightBorderIndicator(value: boolean) {
+    setShowTopRightBorderIndicator(value);
+  }
+
+  function handleShowBottomRightBorderIndicator(value: boolean) {
+    setShowBottomRightBorderIndicator(value);
+  }
+
+  function handleShowBottomLeftBorderIndicator(value: boolean) {
+    setShowBottomLeftBorderIndicator(value);
+  }
+
   useEffect(() => {
     setTimeout(() => {
       if (isCopy) {
@@ -95,6 +131,10 @@ export function BorderRadiusProvider({ children }: BorderRadiusProviderProps) {
         topRight,
         bottomLeft,
         bottomRight,
+        showTopLeftBorderIndicator,
+        showTopRightBorderIndicator,
+        showBottomRightBorderIndicator,
+        showBottomLeftBorderIndicator,
         handleBorderTopLeft,
         handleBorderTopRight,
         handleBorderBottomLeft,
@@ -102,6 +142,10 @@ export function BorderRadiusProvider({ children }: BorderRadiusProviderProps) {
         handleCopyToBoard,
         isCopy,
         handleResetBorderRadius,
+        handleShowTopLeftBorderIndicator,
+        handleShowTopRightBorderIndicator,
+        handleShowBottomRightBorderIndicator,
+        handleShowBottomLeftBorderIndicator,
       }}
     >
       {children}

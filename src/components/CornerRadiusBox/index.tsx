@@ -6,7 +6,14 @@ import {
   AiOutlineRadiusBottomright,
 } from "react-icons/ai";
 import { GrPowerReset } from "react-icons/gr";
-import { Container, Content, InputContent, Tools, Inputs, ResetCornersButton } from "./styles";
+import {
+  Container,
+  Content,
+  InputContent,
+  Tools,
+  Inputs,
+  ResetCornersButton,
+} from "./styles";
 import { useBorderRadius } from "../../hooks/useBorderRadius";
 
 export function CornerRadiusBox() {
@@ -20,6 +27,10 @@ export function CornerRadiusBox() {
     handleBorderBottomLeft,
     handleBorderBottomRight,
     handleResetBorderRadius,
+    handleShowTopLeftBorderIndicator,
+    handleShowTopRightBorderIndicator,
+    handleShowBottomRightBorderIndicator,
+    handleShowBottomLeftBorderIndicator,
   } = useBorderRadius();
 
   return (
@@ -34,6 +45,8 @@ export function CornerRadiusBox() {
                 type="number"
                 value={topLeft}
                 onChange={(e) => handleBorderTopLeft(Number(e.target.value))}
+                onFocus={() => handleShowTopLeftBorderIndicator(true)}
+                onBlur={() => handleShowTopLeftBorderIndicator(false)}
               />
             </InputContent>
             <InputContent>
@@ -42,6 +55,8 @@ export function CornerRadiusBox() {
                 type="number"
                 value={topRight}
                 onChange={(e) => handleBorderTopRight(Number(e.target.value))}
+                onFocus={() => handleShowTopRightBorderIndicator(true)}
+                onBlur={() => handleShowTopRightBorderIndicator(false)}
               />
             </InputContent>
             <InputContent>
@@ -50,6 +65,8 @@ export function CornerRadiusBox() {
                 type="number"
                 value={bottomLeft}
                 onChange={(e) => handleBorderBottomLeft(Number(e.target.value))}
+                onFocus={() => handleShowBottomLeftBorderIndicator(true)}
+                onBlur={() => handleShowBottomLeftBorderIndicator(false)}
               />
             </InputContent>
             <InputContent>
@@ -60,6 +77,8 @@ export function CornerRadiusBox() {
                 onChange={(e) =>
                   handleBorderBottomRight(Number(e.target.value))
                 }
+                onFocus={() => handleShowBottomRightBorderIndicator(true)}
+                onBlur={() => handleShowBottomRightBorderIndicator(false)}
               />
             </InputContent>
           </Inputs>
