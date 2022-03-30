@@ -1,6 +1,7 @@
 import { useBorderRadius } from "../../hooks/useBorderRadius";
-import { Container, Content } from "./styles";
+import { Container, Content, Props, Wrapper } from "./styles";
 import { BsCheck } from "react-icons/bs";
+import { useState } from "react";
 
 export function PropsDisplay() {
   const {
@@ -12,15 +13,34 @@ export function PropsDisplay() {
     isCopy,
   } = useBorderRadius();
 
+  const [isHover, setIsHover] = useState(false);
+
+  function handleIsHover(value: boolean) {
+    setIsHover(value);
+  }
+
   return (
     <Container>
-      <Content onClick={handleCopyToBoard} isCopy={isCopy}>
-        <span>
-          border-radius: {topLeft}px {topRight}px {bottomLeft}px {bottomRight}
-          px;
-        </span>
+      <Content>
+        <Wrapper>
+          <Props
+            onClick={handleCopyToBoard}
+            isCopy={isCopy}
+            isHover={isHover}
+            onMouseEnter={() => handleIsHover(true)}
+            onMouseLeave={() => handleIsHover(false)}
+          >
+            <span>
+              border-radius: {topLeft}px {topRight}px {bottomLeft}px{" "}
+              {bottomRight}
+              px;
+            </span>
+          </Props>
+          {isCopy && <BsCheck size={30} color="var(--green-500)" />}
+        </Wrapper>
+
+        {isHover && <span>Click para copiar!</span>}
       </Content>
-      {isCopy && <BsCheck size={30} color="var(--green-500)" />}
     </Container>
   );
 }
