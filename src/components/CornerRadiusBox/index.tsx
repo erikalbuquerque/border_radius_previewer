@@ -5,7 +5,7 @@ import {
   AiOutlineRadiusBottomleft,
   AiOutlineRadiusBottomright,
 } from "react-icons/ai";
-import { MdKeyboardArrowDown } from "react-icons/md";
+import { MdKeyboardArrowDown, MdKeyboardArrowRight } from "react-icons/md";
 import { BsFullscreen } from "react-icons/bs";
 import { GrPowerReset } from "react-icons/gr";
 import {
@@ -54,7 +54,7 @@ export function CornerRadiusBox() {
     setShowBordersTools(!showBordersTools);
   }
 
-  function handleFullCornerValue(value: number){
+  function handleFullCornerValue(value: number) {
     setFullCornerValue(value);
     handleFullCorner(value);
   }
@@ -76,8 +76,15 @@ export function CornerRadiusBox() {
                 onBlur={() => handleShowBorderIndicator(false)}
               />
             </FullCorner>
-            <FullCornerButton onClick={handleShowBordersTools} isDisabled={showBordersTools}>
-              <MdKeyboardArrowDown size={20} />
+            <FullCornerButton
+              onClick={handleShowBordersTools}
+              isDisabled={showBordersTools}
+            >
+              {showBordersTools ? (
+                <MdKeyboardArrowDown size={20} />
+              ) : (
+                <MdKeyboardArrowRight size={20} />
+              )}
             </FullCornerButton>
           </Wrapper>
 
@@ -133,10 +140,12 @@ export function CornerRadiusBox() {
                   />
                 </InputContent>
               </Inputs>
-              <ResetCornersButton onClick={() => {
-                handleResetBorderRadius();
-                setFullCornerValue(0);
-              }}>
+              <ResetCornersButton
+                onClick={() => {
+                  handleResetBorderRadius();
+                  setFullCornerValue(0);
+                }}
+              >
                 <GrPowerReset size={15} />
               </ResetCornersButton>
             </Wrapper>
