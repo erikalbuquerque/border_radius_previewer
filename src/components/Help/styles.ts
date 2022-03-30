@@ -8,7 +8,6 @@ type BoxModelProps = {
 };
 
 export const Container = styled.div`
-  max-height: 400px;
   max-width: 600px;
   overflow: auto;
 
@@ -25,6 +24,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
   gap: 1.5rem;
   code {
     background-color: #eee;
